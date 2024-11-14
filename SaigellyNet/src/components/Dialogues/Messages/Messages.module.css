@@ -1,0 +1,14 @@
+.messages{
+    background-color: aquamarine;
+    padding: 15px;
+    width: 100%;
+}
+.messagesList{
+    display: flex;
+    flex-direction: column;
+}
+.messagesList li:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+
