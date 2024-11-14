@@ -3,12 +3,12 @@ import s from "./Dialogues.module.css"
 import Messages from "./Messages/Messages"
 import Chats from "./Chats/Chats"
 
-const Dialogues = (state) => {
+const Dialogues = ({state, addMessage}) => {
     
     return (
         <section className={s.dialogues}>
-            <Chats chats = {state.state.chats}/>
-            <Messages messages = {state.state.messages}/>
+            <Chats chats = {state.chats}/>
+            <Messages messages = {state.messages} addMessage={addMessage}/>
         </section>
     )
 }

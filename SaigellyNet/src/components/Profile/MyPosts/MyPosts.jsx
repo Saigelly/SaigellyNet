@@ -3,11 +3,11 @@ import NewPost from "./NewPost/NewPost";
 import Posts from "./Posts/Posts";
 
 
-const MyPosts = ({props}) => {
+const MyPosts = ({posts, addPost}) => {
     return (
         <div className={s.myPosts}>
-            <NewPost />
-            <Posts posts={props.posts}/>
+            <NewPost addPost={addPost}/>
+            <Posts posts={posts}/>
 
         </div>
     )

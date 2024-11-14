@@ -1,7 +1,9 @@
 .nav{
     margin-bottom: 20px;
+    height: 50px;
 }
 
 .list{
     display: flex;
+    height: 100%;
 }

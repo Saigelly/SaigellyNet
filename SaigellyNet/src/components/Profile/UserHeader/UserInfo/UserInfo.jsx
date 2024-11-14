@@ -1,7 +1,7 @@
 import SocialList from "./SocialList/SocialList";
 import s from "./UserInfo.module.css"
 
-const UserInfo = (props) => {
+const UserInfo = ({socialItems}) => {
 
     return (
         <div className={s.userInfo}>
@@ -12,7 +12,7 @@ const UserInfo = (props) => {
             <div className={s.descr}>
                 <p className={s.name}> Молчанов Дмитрий</p>
                 <p className={s.status}>Разрабатываю соцсеть</p>
-                <SocialList socialItems={props.props}/>
+                <SocialList socialItems={socialItems}/>
                 
             </div>
         </div>

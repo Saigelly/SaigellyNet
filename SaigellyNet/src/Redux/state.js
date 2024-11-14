@@ -1,50 +1,44 @@
 const state = {
     profile: {
-        userHeader: {
-            socialItems: [
-                { link: "#", imgSrc: "/src/assets/github.svg", imgAlt: "github" },
-                { link: "#", imgSrc: "/src/assets/github.svg", imgAlt: "github" },
-                { link: "#", imgSrc: "/src/assets/github.svg", imgAlt: "github" },
-            ],
-            statsValue: [
-                { text: "Постов: ", value: 0 },
-                { text: "Коментариев: ", value: 2 },
-                { text: "Просмотров: ", value: 12 },
-            ],
-        },
-        navTabs: {
-            tabLinks: [
-                { path: "#", label: "Стена" },
-                { path: "#", label: "Обо мне" },
-                { path: "#", label: "Друзья" },
-                { path: "#", label: "Фото" },
-            ],
-        },
-        myPosts: {
-            posts: [
-                {
-                    id: "3",
-                    path: "#",
-                    imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
-                    text: "Добро пожаловать на страницу первого пользователя",
-                    likeCount: 11
-                },
-                {
-                    id: "2",
-                    path: "#",
-                    imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
-                    text: "Пытаюсь понять React и написать соцсеть",
-                    likeCount: 10
-                },
-                {
-                    id: "1",
-                    path: "#",
-                    imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
-                    text: "Привет. этой мой первый пост",
-                    likeCount: 5
-                },
-            ],
-        },
+        socialItems: [
+            { link: "#", imgSrc: "/src/assets/github.svg", imgAlt: "github" },
+            { link: "#", imgSrc: "/src/assets/github.svg", imgAlt: "github" },
+            { link: "#", imgSrc: "/src/assets/github.svg", imgAlt: "github" },
+        ],
+        statsValue: [
+            { text: "Постов: ", value: 0 },
+            { text: "Коментариев: ", value: 2 },
+            { text: "Просмотров: ", value: 12 },
+        ],
+        tabLinks: [
+            { path: "/profile/home", label: "Стена" },
+            { path: "/profile/about", label: "Обо мне" },
+            { path: "/profile/friends", label: "Друзья" },
+            { path: "/profile/gallery", label: "Фото" },
+        ],
+        posts: [
+            {
+                id: "3",
+                path: "#",
+                imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
+                text: "Добро пожаловать на страницу первого пользователя",
+                likeCount: 11
+            },
+            {
+                id: "2",
+                path: "#",
+                imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
+                text: "Пытаюсь понять React и написать соцсеть",
+                likeCount: 10
+            },
+            {
+                id: "1",
+                path: "#",
+                imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
+                text: "Привет. этой мой первый пост",
+                likeCount: 5
+            },
+        ],
     },
     dialogues: {
         chats: [
@@ -78,4 +72,24 @@ const state = {
 
 }
 
+export const addPost = (textPost) => {
+    const newPost = {
+        id: "5",
+        path: "#",
+        imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
+        text: textPost,
+        likeCount: 0
+
+    };
+    state.profile.posts.push(newPost);
+}
+
+export const addMessage = (textMessage) => {
+    const newMessage = {
+        id: 4,
+        text: textMessage ,
+        userId: "1",
+        imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
+    }
+}
 export default state;

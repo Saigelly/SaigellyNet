@@ -11,7 +11,7 @@ import Settings from './components/Settings/Settings'
 
 
 
-function App( {state} ) {
+function App( props ) {
 
   return (
     <>
@@ -21,8 +21,15 @@ function App( {state} ) {
         <Navbar />
         <div className="wrapper-app__content">
           <Routes>
-            <Route path="/profile" element={<Profile state={state.profile} />} />
-            <Route path="/dialogues/*" element={<Dialogues state={state.dialogues} />} />
+            <Route path="/profile/*"
+             element={<Profile
+              state={props.state.profile}
+              addPost={props.addPost}
+              />} />
+            <Route path="/dialogues/*"
+             element={<Dialogues
+            state={props.state.dialogues} 
+            addMessage={props.addMessage}/>} />
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
