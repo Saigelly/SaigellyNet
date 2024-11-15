@@ -1,0 +1,8 @@
+.stats {
+    align-self: flex-end;
+}
+
+.list {
+    display: flex;
+    gap: 24px;
+}

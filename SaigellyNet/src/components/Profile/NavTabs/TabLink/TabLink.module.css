@@ -1,0 +1,42 @@
+.item {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    margin-right: 0;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+
+    cursor: pointer;
+    width: 100%;
+    color: #9e9faf;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 15px 10px;
+}
+
+.link:after {
+    content: "";
+    height: 5px;
+    width: 100%;
+    background-color: #2d5be3;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    visibility: hidden;
+    opacity: 0;
+}
+.link.active:after{
+    visibility: visible;
+    opacity: 1;
+}
+
+.item>.active {
+    color: #000;
+}

@@ -1,0 +1,25 @@
+.nav{
+    margin-bottom: 20px;
+    height: 50px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.list{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0 0 8px 8px;
+    border-bottom: 3px solid #d8e1ef;
+    height: 100%;
+    padding-left: ;
+}
+
+.list li:not(:last-of-type){
+    border-right: 1px solid #e4e9f1;
+}
+.list li:first-child a::after{
+    border-radius: 0 0 0 8px;
+}
+.list li:last-child a::after{
+    border-radius: 0 0 8px 0;
+}

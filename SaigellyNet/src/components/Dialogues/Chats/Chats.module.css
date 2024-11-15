@@ -1,0 +1,16 @@
+.chats{
+    background-color: rgb(66, 160, 94);
+    padding: 15px;
+}
+.chatList li:not(:last-child) {
+    margin-bottom: 20px;
+    
+}
+
+.chatItem.active{
+    color: gold;
+}
+
+
+
+

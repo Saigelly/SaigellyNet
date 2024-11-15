@@ -1,0 +1,21 @@
+.dialogues{
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    padding: 30px;
+}
+.chats{
+    background-color: rgb(66, 160, 94);
+    padding: 15px;
+}
+.chatList .chatItem:not(:last-child) {
+    margin-bottom: 20px;
+    
+}
+
+.chatItem.active{
+    color: gold;
+}
+
+
+
+

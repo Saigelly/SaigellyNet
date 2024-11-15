@@ -1,0 +1,15 @@
+.item{
+    background-color: rgb(75, 21, 80);
+
+
+}
+.item a{
+    display: flex;
+    min-height: 30px;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+.item a.active{
+    color: gold;
+}
