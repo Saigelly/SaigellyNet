@@ -3,16 +3,16 @@ import NewPost from "./NewPost/NewPost";
 import Posts from "./Posts/Posts";
 
 
-const MyPosts = ({ posts, addPost, newPostText, updateNewPostText }) => {
+const MyPosts = ({ state, addPost, updateNewPostText }) => {
 
     return (
         <div className={s.myPosts}>
             <NewPost
                 addPost={addPost}
-                newPostText = {newPostText}
+                newPostText={state.newPostText}
                 updateNewPostText={updateNewPostText}
             />
-            <Posts posts={posts} />
+            <Posts posts={state.posts} />
 
         </div>
     )

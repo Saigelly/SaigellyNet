@@ -3,12 +3,17 @@ import s from "./Messages.module.css"
 import Message from "./Message/Message";
 
 const Messages = ({ messages, addMessage, newMessageText, updateNewMessageText }) => {
+
     const newMessageElement = React.createRef();
+
     const onMessageChange = () => {
         const text = newMessageElement.current.value;
         updateNewMessageText(text);
     }
-    
+    const addNewMessage = () => {
+        addMessage();
+    }
+
     return (
         <div className={s.chat}>
             <div className={s.messages}>
@@ -25,7 +30,7 @@ const Messages = ({ messages, addMessage, newMessageText, updateNewMessageText }
                     value={newMessageText}
                     onChange={onMessageChange}
                 />
-                <button onClick={() => addMessage(newMessageElement.current.value)} className={s.button}>Написать</button>
+                <button onClick={addNewMessage} className={s.button}>Написать</button>
             </div>
         </div>
     )

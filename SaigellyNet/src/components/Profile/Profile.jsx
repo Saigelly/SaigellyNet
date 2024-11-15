@@ -16,14 +16,12 @@ const Profile = ({ state, addPost, updateNewPostText }) => {
             <Routes>
                 <Route path={"/home"}
                     element={<MyPosts
-                        posts={state.posts}
-                        newPostText = {state.newPostText}
+                        state={state}
                         addPost={addPost}
                         updateNewPostText={updateNewPostText} />} />
                 <Route index
                     element={<MyPosts
-                        posts={state.posts}
-                        newPostText = {state.newPostText}
+                        state={state}
                         addPost={addPost}
                         updateNewPostText={updateNewPostText} />} />
                 <Route path="about" element={<div> Обо МНЕ</div>} />

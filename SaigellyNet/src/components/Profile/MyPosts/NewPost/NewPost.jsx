@@ -2,6 +2,7 @@ import React from "react"
 import s from "./NewPost.module.css"
 
 const NewPost = ({ addPost, updateNewPostText, newPostText }) => {
+  
     const newPostElement = React.createRef()
     const newPost = () => {
         addPost();
