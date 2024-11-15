@@ -1,6 +1,4 @@
-import React from 'react'
 import './index.css'
-import state, { subscribe } from './Redux/state.js'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
@@ -8,7 +6,7 @@ import { addPost, addMessage, updateNewPostText, updateNewMessageText } from './
 
 const root = createRoot(document.getElementById('root'));
 
-const rerenderEntireTree = (state) => {
+export const rerenderEntireTree = (state) => {
   root.render(
     <StrictMode>
       <App
@@ -21,7 +19,4 @@ const rerenderEntireTree = (state) => {
     </StrictMode>,
   )
 }
-
-rerenderEntireTree(state);
-subscribe(rerenderEntireTree);
 

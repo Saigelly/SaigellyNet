@@ -86,6 +86,7 @@ const state = {
     },
 };
 
+
 export const subscribe = (observer) => {
     rerenderEntireTree = observer;
 }
