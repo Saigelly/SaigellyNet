@@ -2,16 +2,16 @@ import React from "react";
 import s from "./Messages.module.css"
 import Message from "./Message/Message";
 
-const Messages = ({ messages, addMessage, newMessageText, updateNewMessageText }) => {
+const Messages = ({ messages, dispatch, newMessageText }) => {
 
     const newMessageElement = React.createRef();
 
     const onMessageChange = () => {
         const text = newMessageElement.current.value;
-        updateNewMessageText(text);
+        dispatch({type: "UPDATE-NEW-MESSAGE-TEXT", newText: text});
     }
     const addNewMessage = () => {
-        addMessage();
+        dispatch({type:"ADD-MESSAGE" });
     }
 
     return (

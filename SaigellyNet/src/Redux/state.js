@@ -85,12 +85,14 @@ let store = {
             ],
         },
     },
+
     getState() {
         return this._state
     },
     subscribe(observer) {
         this._subscriber = observer;
     },
+
     addPost() {
         const newPost = {
             id: "5",
@@ -114,7 +116,7 @@ let store = {
             userId: "1",
             imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
         }
-        
+
         this._state.dialogues.messages.push(newMessage);
         this._state.dialogues.newMessageText = "";
         this._subscriber(this._state);
@@ -122,6 +124,36 @@ let store = {
     updateNewMessageText(updateText) {
         this._state.dialogues.newMessageText = updateText;
         this._subscriber(this._state);
+    },
+    dispatch(action) {
+        if (action.type === "ADD-POST") {
+            const newPost = {
+                id: "5",
+                path: "#",
+                imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
+                text: this._state.profile.newPostText,
+                likeCount: 0
+            };
+            this._state.profile.posts.push(newPost);
+            this._state.profile.newPostText = "";
+            this._subscriber(this._state);
+        } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+            this._state.profile.newPostText = action.newText;
+            this._subscriber(this._state);
+        } else if (action.type === "ADD-MESSAGE") {
+            const newMessage = {
+                id: 4,
+                text: this._state.dialogues.newMessageText,
+                userId: "1",
+                imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
+            }
+            this._state.dialogues.messages.push(newMessage);
+            this._state.dialogues.newMessageText = "";
+            this._subscriber(this._state);
+        } else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
+            this._state.dialogues.newMessageText = action.newText;
+            this._subscriber(this._state);
+        }
     }
 }
 

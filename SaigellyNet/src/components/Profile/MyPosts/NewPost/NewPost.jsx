@@ -1,16 +1,16 @@
 import React from "react"
 import s from "./NewPost.module.css"
 
-const NewPost = ({ addPost, updateNewPostText, newPostText }) => {
-  
+const NewPost = ({ dispatch, newPostText }) => {
+
     const newPostElement = React.createRef()
     const newPost = () => {
-        addPost();
+        dispatch({ type: "ADD-POST" });
     }
 
     const onPostChange = () => {
         const text = newPostElement.current.value;
-        updateNewPostText(text);
+        dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: text });
     }
 
     return (

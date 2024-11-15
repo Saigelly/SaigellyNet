@@ -3,7 +3,7 @@ import s from "./Dialogues.module.css"
 import Messages from "./Messages/Messages"
 import Chats from "./Chats/Chats"
 
-const Dialogues = ({ state, addMessage, updateNewMessageText }) => {
+const Dialogues = ({ state, dispatch }) => {
 
     return (
         <section className={s.dialogues}>
@@ -11,8 +11,8 @@ const Dialogues = ({ state, addMessage, updateNewMessageText }) => {
             <Messages
                 messages={state.messages}
                 newMessageText={state.newMessageText}
-                addMessage={addMessage}
-                updateNewMessageText={updateNewMessageText} />
+                dispatch={dispatch}
+            />
         </section>
     )
 }
