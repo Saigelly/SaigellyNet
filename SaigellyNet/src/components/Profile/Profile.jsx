@@ -4,7 +4,7 @@ import NavTabs from "./NavTabs/NavTabs";
 import s from "./Profile.module.css"
 import UserHeader from "./UserHeader/UserHeader";
 
-const Profile = ({ state, addPost }) => {
+const Profile = ({ state, addPost, updateNewPostText }) => {
 
     return (
         <section className={s.profile}>
@@ -14,8 +14,18 @@ const Profile = ({ state, addPost }) => {
             />
             <NavTabs tabLinks={state.tabLinks} />
             <Routes>
-                <Route path={"/home"} element={<MyPosts posts={state.posts} addPost={addPost} />} />
-                <Route index element={<MyPosts posts={state.posts} addPost={addPost}/>} />
+                <Route path={"/home"}
+                    element={<MyPosts
+                        posts={state.posts}
+                        newPostText = {state.newPostText}
+                        addPost={addPost}
+                        updateNewPostText={updateNewPostText} />} />
+                <Route index
+                    element={<MyPosts
+                        posts={state.posts}
+                        newPostText = {state.newPostText}
+                        addPost={addPost}
+                        updateNewPostText={updateNewPostText} />} />
                 <Route path="about" element={<div> Обо МНЕ</div>} />
                 <Route path="friends" element={<div>Друзья</div>} />
                 <Route path="gallery" element={<div> Галерея</div>} />

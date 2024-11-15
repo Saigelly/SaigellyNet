@@ -10,7 +10,7 @@ const UserInfo = ({socialItems}) => {
                     alt="avatar" />
             </a>
             <div className={s.descr}>
-                <p className={s.name}> Молчанов Дмитрий</p>
+                <h3 className={s.name}> Молчанов Дмитрий</h3>
                 <p className={s.status}>Разрабатываю соцсеть</p>
                 <SocialList socialItems={socialItems}/>
                 

@@ -5,8 +5,7 @@
     display: flex;
     align-items: flex-end;
     height: 340px;
-    padding: 35px;
-    padding-left: 50px;
+    padding: 35px 0 35px 50px;
     color: #fff;
     border-radius: 8px;
     background-repeat: no-repeat;

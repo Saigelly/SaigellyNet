@@ -1,3 +1,5 @@
+import { rerenderEntireTree } from "../render";
+
 const state = {
     profile: {
         socialItems: [
@@ -39,6 +41,7 @@ const state = {
                 likeCount: 5
             },
         ],
+        newPostText: ""
     },
     dialogues: {
         chats: [
@@ -67,29 +70,52 @@ const state = {
                 userId: "1",
                 imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
             },
-        ]
-    }
+        ],
+        newMessageText: ""
+    },
+    navbar: {
+        navItems: [
+            { path: "/profile", text: "Профиль" },
+            { path: "/dialogues", text: "Сообщения" },
+            { path: "/news", text: "Новости" },
+            { path: "/music", text: "Музыка" },
+            { path: "/settings", text: "Настройки" },
+        ],
+    },
+};
 
-}
-
-export const addPost = (textPost) => {
+export const addPost = () => {
     const newPost = {
         id: "5",
         path: "#",
         imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
-        text: textPost,
+        text: state.profile.newPostText,
         likeCount: 0
-
     };
     state.profile.posts.push(newPost);
+    state.profile.textAreaValue = "";
+    rerenderEntireTree(state);
+}
+
+export const updateNewPostText = (updateText) => {
+    state.profile.newPostText = updateText;
+    rerenderEntireTree(state);
 }
 
 export const addMessage = (textMessage) => {
     const newMessage = {
         id: 4,
-        text: textMessage ,
+        text: textMessage,
         userId: "1",
         imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
     }
+    state.dialogues.messages.push(newMessage);
+    state.dialogues.newMessageText = "";
+    rerenderEntireTree(state);
+}
+
+export const updateNewMessageText = (updateText) => {
+    state.dialogues.newMessageText = updateText;
+    rerenderEntireTree(state);
 }
 export default state;

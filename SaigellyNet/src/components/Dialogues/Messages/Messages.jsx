@@ -2,8 +2,13 @@ import React from "react";
 import s from "./Messages.module.css"
 import Message from "./Message/Message";
 
-const Messages = ({ messages, addMessage }) => {
+const Messages = ({ messages, addMessage, newMessageText, updateNewMessageText }) => {
     const newMessageElement = React.createRef();
+    const onMessageChange = () => {
+        const text = newMessageElement.current.value;
+        updateNewMessageText(text);
+    }
+    
     return (
         <div className={s.chat}>
             <div className={s.messages}>
@@ -12,7 +17,14 @@ const Messages = ({ messages, addMessage }) => {
                 </ul>
             </div>
             <div className={s.newMessage}>
-                <textarea ref={newMessageElement} name="new-message" id="new-message" className={s.newPost}></textarea>
+                <textarea
+                    ref={newMessageElement}
+                    name="new-message"
+                    id="new-message"
+                    className={s.newPost}
+                    value={newMessageText}
+                    onChange={onMessageChange}
+                />
                 <button onClick={() => addMessage(newMessageElement.current.value)} className={s.button}>Написать</button>
             </div>
         </div>

@@ -11,35 +11,38 @@ import Settings from './components/Settings/Settings'
 
 
 
-function App( props ) {
+function App(props) {
 
   return (
     <>
-    <BrowserRouter>
-      <div className="wrapper-app">
-        <Header />
-        <Navbar />
-        <div className="wrapper-app__content">
-          <Routes>
-            <Route path="/profile/*"
-             element={<Profile
-              state={props.state.profile}
-              addPost={props.addPost}
-              />} />
-            <Route path="/dialogues/*"
-             element={<Dialogues
-            state={props.state.dialogues} 
-            addMessage={props.addMessage}/>} />
-            <Route path="/news" element={<News />} />
-            <Route path="/music" element={<Music />} />
-            <Route path="/settings" element={<Settings />} />
+      <BrowserRouter>
+        <div className="wrapper-app">
+          <Header />
+          <Navbar state={props.state.navbar} />
+          <div className="wrapper-app__content">
+            <Routes>
+              <Route path="/profile/*"
+                element={<Profile
+                  state={props.state.profile}
+                  addPost={props.addPost}
+                  updateNewPostText={props.updateNewPostText}
+                />} />
+              <Route path="/dialogues/*"
+                element={<Dialogues
+                  state={props.state.dialogues}
+                  addMessage={props.addMessage}
+                  updateNewMessageText={props.updateNewMessageText}
+                />} />
+              <Route path="/news" element={<News />} />
+              <Route path="/music" element={<Music />} />
+              <Route path="/settings" element={<Settings />} />
 
 
 
-          </Routes>
+            </Routes>
+          </div>
+
         </div>
-
-      </div>
       </BrowserRouter>
     </>
   )

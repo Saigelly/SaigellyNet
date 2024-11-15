@@ -1,32 +1,12 @@
-import { Link, NavLink } from "react-router-dom"
 import s from "./Navbar.module.css"
+import NavItem from "./NavItem/NavItem";
 
-const Navbar = (props) => {
-    const items = [
-        { path: "/profile", text: "Профиль" },
-        { path: "/dialogues", text: "Сообщения" },
-        { path: "/news", text: "Новости" },
-        { path: "/music", text: "Музыка" },
-        { path: "/settings", text: "Настройки" },
-
-
-    ]
-
-    const NavItem = ({ item }) => {
-        return (
-            <li className={s.item}>
-                <NavLink to={item.path}
-                    className={({ isActive }) => isActive ? s.active : ""}
-                >{item.text}</NavLink>
-            </li>
-        )
-    }
-
+const Navbar = ({state}) => {
     return (
         <nav className={s.nav}>
             <div className="burger">бургер</div>
-            <ul className="nav__list">
-                {items.map(item => <NavItem item={item} />)}
+            <ul className={s.navList}>
+                {state.navItems.map((item, index) => <NavItem item={item} key={index} />)}
             </ul>
         </nav>
     )

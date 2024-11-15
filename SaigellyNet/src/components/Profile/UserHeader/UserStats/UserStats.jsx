@@ -5,7 +5,7 @@ const UserStats = ({ statsValue }) => {
     return (
         <div className={s.stats}>
             <ul className={s.list}>
-                {statsValue.map(stat => <StatsItem stat={stat} />)}
+                {statsValue.map((stat, index) => <StatsItem stat={stat} key={index} />)}
             </ul>
         </div>
     )

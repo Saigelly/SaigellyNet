@@ -1,13 +1,12 @@
 .nav{
     background-color: greenyellow;
     grid-area: nav;
+    min-height: 100vh;
 }
-.item{
-    background-color: rgb(75, 21, 80);
+.navList{
+    padding: 10px;
 }
-.item a{
-    color: #fff;
-}
-.item a.active{
-    color: gold;
+
+.navList li:not(:last-of-type){
+    margin-bottom: 10px;
 }
