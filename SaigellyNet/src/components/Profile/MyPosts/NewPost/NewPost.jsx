@@ -1,16 +1,18 @@
 import React from "react"
 import s from "./NewPost.module.css"
+import { onAddPostClickCreator, onNewPostTextUpdateCreator } from "../../../../Redux/profileReducer"
+
 
 const NewPost = ({ dispatch, newPostText }) => {
 
     const newPostElement = React.createRef()
     const newPost = () => {
-        dispatch({ type: "ADD-POST" });
+        dispatch(onAddPostClickCreator());
     }
 
     const onPostChange = () => {
         const text = newPostElement.current.value;
-        dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: text });
+        dispatch(onNewPostTextUpdateCreator(text));
     }
 
     return (
