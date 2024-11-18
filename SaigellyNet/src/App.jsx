@@ -18,17 +18,17 @@ function App(props) {
       <BrowserRouter>
         <div className="wrapper-app">
           <Header />
-          <Navbar state={props.state.navbar} />
+          <Navbar state={props.state.navbarReducer} />
           <div className="wrapper-app__content">
             <Routes>
               <Route path="/profile/*"
                 element={<Profile
-                  state={props.state.profile}
+                  state={props.state.profileReducer}
                   dispatch={props.dispatch}
                 />} />
               <Route path="/dialogues/*"
                 element={<Dialogues
-                  state={props.state.dialogues}
+                  state={props.state.dialoguesReducer}
                   dispatch={props.dispatch}
                 />} />
               <Route path="/news" element={<News />} />

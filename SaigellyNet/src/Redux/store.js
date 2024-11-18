@@ -98,9 +98,9 @@ let store = {
     },
 
     dispatch(action) {
-        this._state.profile = profileReduce(action, this._state.profile);
-        this._state.dialogues = dialoguesReducer(action, this._state.dialogues);
-        this._state.navbar = navbarReducer(action, this._state.navbar);
+        this._state.profile = profileReduce(this._state.profile, action);
+        this._state.dialogues = dialoguesReducer(this._state.dialogues, action);
+        this._state.navbar = navbarReducer(this._state.navbar, action);
         this._subscriber(this._state);
     }
 }

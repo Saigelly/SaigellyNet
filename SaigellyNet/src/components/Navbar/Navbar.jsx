@@ -2,6 +2,7 @@ import s from "./Navbar.module.css"
 import NavItem from "./NavItem/NavItem";
 
 const Navbar = ({state}) => {
+
     return (
         <nav className={s.nav}>
             <div className="burger">бургер</div>
