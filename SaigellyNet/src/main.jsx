@@ -7,14 +7,14 @@ import App from './App.jsx'
 
 const root = createRoot(document.getElementById('root'));
 
-console.log(store)
 
 const rerenderEntireTree = () => {
+Window.store = store;
   root.render(
     <StrictMode>
       <App
         state={store.getState()}
-        dispatch={store.dispatch.bind(store)}
+        store={store}
       />
     </StrictMode>,
   )

@@ -1,28 +1,25 @@
 import { Route, Routes } from "react-router-dom";
-import MyPosts from "./MyPosts/MyPosts";
 import NavTabs from "./NavTabs/NavTabs";
 import s from "./Profile.module.css"
-import UserHeader from "./UserHeader/UserHeader";
+import MyPostsContainer from "./MyPosts/Posts/MyPostsContainer";
+import UserHeaderContainer from "./UserHeader/UserHeaderContainer";
 
-const Profile = ({ state, dispatch }) => {
+const Profile = ({ state, store }) => {
 
     return (
         <section className={s.profile}>
-            <UserHeader
-                socialItems={state.socialItems}
-                statsValue={state.statsValue}
+            <UserHeaderContainer
+                store={store}
             />
             <NavTabs tabLinks={state.tabLinks} />
             <Routes>
                 <Route path={"/home"}
-                    element={<MyPosts
-                        state={state}
-                        dispatch={dispatch}
+                    element={<MyPostsContainer
+                        store={store}
                     />} />
                 <Route index
-                    element={<MyPosts
-                        state={state}
-                        dispatch={dispatch}
+                    element={<MyPostsContainer
+                        store={store}
                     />} />
                 <Route path="about" element={<div> Обо МНЕ</div>} />
                 <Route path="friends" element={<div>Друзья</div>} />
