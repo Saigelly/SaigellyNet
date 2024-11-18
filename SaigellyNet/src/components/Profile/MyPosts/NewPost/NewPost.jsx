@@ -1,28 +1,25 @@
 import React from "react"
 import s from "./NewPost.module.css"
-import { onAddPostClickCreator, onNewPostTextUpdateCreator } from "../../../../Redux/profileReducer"
 
+const NewPost = (props) => {
 
-const NewPost = ({ dispatch, newPostText }) => {
+    const newPostElement = React.createRef();
 
-    const newPostElement = React.createRef()
     const newPost = () => {
-        dispatch(onAddPostClickCreator());
+        props.onAddPost();
     }
 
-    const onPostChange = () => {
-        debugger;
+    const onTextPostChange = () => {
         const text = newPostElement.current.value;
-        dispatch(onNewPostTextUpdateCreator(text));
+        props.onPostChange(text);
     }
-
     return (
         <div className={s.newPost}>
             <textarea
                 ref={newPostElement}
                 className={s.newPost}
-                value={newPostText}
-                onChange={onPostChange}
+                value={props.newPostText}
+                onChange={onTextPostChange}
             ></textarea>
 
             <button onClick={newPost} className={s.button}>Написать</button>

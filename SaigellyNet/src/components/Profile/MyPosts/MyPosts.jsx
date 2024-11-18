@@ -1,37 +1,20 @@
 import React from "react";
-import { onAddPostClickCreator, onNewPostTextUpdateCreator } from "../../../Redux/profileReducer";
 import s from "./MyPosts.module.css"
 import Post from "./Posts/Post/Post";
+import NewPost from "./NewPost/NewPost";
 
-
-
-const MyPosts = ({ state, dispatch }) => {
-
-    const newPostElement = React.createRef()
-    const newPost = () => {
-        dispatch(onAddPostClickCreator());
-    }
-
-    const onPostChange = () => {
-        debugger;
-        const text = newPostElement.current.value;
-        dispatch(onNewPostTextUpdateCreator(text));
-    }
+const MyPosts = (props) => {
 
     return (
         <div className={s.myPosts}>
-            <div className={s.newPost}>
-                <textarea
-                    ref={newPostElement}
-                    className={s.newPost}
-                    value={state.newPostText}
-                    onChange={onPostChange}
-                ></textarea>
-                <button onClick={newPost} className={s.button}>Написать</button>
-            </div>
-            
+            <NewPost
+                onAddPost={props.onAddPost}
+                onPostChange={props.onPostChange}
+                newPostText={props.newPostText}
+            />
+
             <div className={s.posts}>
-                {state.posts.map(post => <Post post={post} key={post.id} />)}
+                {props.posts.map(post => <Post post={post} key={post.id} />)}
             </div>
 
 

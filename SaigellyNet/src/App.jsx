@@ -24,22 +24,18 @@ function App(props) {
               <Route path="/profile/*"
                 element={<Profile
                   state={props.state.profileReducer}
-                  dispatch={props.dispatch}
+                  store={props.store}
                 />} />
               <Route path="/dialogues/*"
                 element={<Dialogues
                   state={props.state.dialoguesReducer}
-                  dispatch={props.dispatch}
+                  store={props.store}
                 />} />
               <Route path="/news" element={<News />} />
               <Route path="/music" element={<Music />} />
               <Route path="/settings" element={<Settings />} />
-
-
-
             </Routes>
           </div>
-
         </div>
       </BrowserRouter>
     </>
