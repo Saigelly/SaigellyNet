@@ -20,8 +20,6 @@ const NewPost = ({ dispatch, newPostText }) => {
         <div className={s.newPost}>
             <textarea
                 ref={newPostElement}
-                name="new-post"
-                id="new-post"
                 className={s.newPost}
                 value={newPostText}
                 onChange={onPostChange}
