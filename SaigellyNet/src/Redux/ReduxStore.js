@@ -1,0 +1,16 @@
+import { combineReducers, createStore } from "redux";
+import profileReducer from "./profileReducer";
+import dialoguesReducer from "./dialoguesReducer";
+import navbarReducer from "./navbarReducer";
+
+
+const reducers = combineReducers({
+    profileReducer,
+    dialoguesReducer,
+    navbarReducer
+});
+
+const store = createStore(reducers);
+
+
+export default store;

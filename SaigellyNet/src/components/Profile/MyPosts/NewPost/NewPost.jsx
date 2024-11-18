@@ -11,6 +11,7 @@ const NewPost = ({ dispatch, newPostText }) => {
     }
 
     const onPostChange = () => {
+        debugger;
         const text = newPostElement.current.value;
         dispatch(onNewPostTextUpdateCreator(text));
     }
