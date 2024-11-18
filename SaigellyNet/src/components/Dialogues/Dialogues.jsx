@@ -1,17 +1,13 @@
-import { Link } from "react-router-dom"
-import s from "./Dialogues.module.css"
-import Messages from "./Messages/Messages"
-import Chats from "./Chats/Chats"
-import MessagesContainer from "./Messages/MessagesContainer"
+import s from "./Dialogues.module.css";
+import MessagesContainer from "./Messages/MessagesContainer";
+import ChatsContainer from "./Chats/ChatsContainer";
 
-const Dialogues = ({ state, store }) => {
+const Dialogues = () => {
 
     return (
         <section className={s.dialogues}>
-            <Chats chats={state.chats} />
-            <MessagesContainer
-                store = {store}
-            />
+            <ChatsContainer />
+            <MessagesContainer />
         </section>
     )
 }

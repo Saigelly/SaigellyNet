@@ -1,10 +1,19 @@
+import StoreContext from "../../../storeContext";
 import UserHeader from "./UserHeader";
 
-const UserHeaderContainer = (props) => {
-    const state = props.store.getState().profileReducer;
+const UserHeaderContainer = () => {
     return (
-        <UserHeader socialItems={state.socialItems}
-        statsValue={state.statsValue} />
+        <StoreContext.Consumer>
+            {
+                (store) => {
+                    const state = store.getState().profileReducer;
+                    return (
+                        <UserHeader socialItems={state.socialItems}
+                            statsValue={state.statsValue} />
+                    )
+                }
+            }
+        </StoreContext.Consumer>
     )
 }
 
