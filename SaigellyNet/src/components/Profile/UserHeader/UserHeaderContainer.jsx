@@ -1,20 +1,13 @@
-import StoreContext from "../../../storeContext";
+import { connect } from "react-redux";
 import UserHeader from "./UserHeader";
 
-const UserHeaderContainer = () => {
-    return (
-        <StoreContext.Consumer>
-            {
-                (store) => {
-                    const state = store.getState().profileReducer;
-                    return (
-                        <UserHeader socialItems={state.socialItems}
-                            statsValue={state.statsValue} />
-                    )
-                }
-            }
-        </StoreContext.Consumer>
-    )
+const mapStateToProps = (state) => {
+    return {
+        socialItems: state.profileReducer.socialItems,
+        statsValue: state.profileReducer.statsValue
+    }
 }
+
+const UserHeaderContainer = connect(mapStateToProps)(UserHeader);
 
 export default UserHeaderContainer;

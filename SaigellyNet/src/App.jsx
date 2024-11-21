@@ -11,25 +11,25 @@ import NavbarContainer from './components/Navbar/NavbarContainer'
 
 
 
-function App(props) {
+function App() {
 
   return (
     <>
-        <div className="wrapper-app">
-          <Header />
-          <NavbarContainer />
-          <div className="wrapper-app__content">
-            <Routes>
-              <Route path="/profile/*"
-                element={<Profile />} />
-              <Route path="/dialogues/*"
-                element={<Dialogues />} />
-              <Route path="/news" element={<News />} />
-              <Route path="/music" element={<Music />} />
-              <Route path="/settings" element={<Settings />} />
-            </Routes>
-          </div>
+      <div className="wrapper-app">
+        <Header />
+        <NavbarContainer />
+        <div className="wrapper-app__content">
+          <Routes>
+            <Route path="/profile/*"
+              element={<Profile />} />
+            <Route path="/dialogues/*"
+              element={<Dialogues />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/music" element={<Music />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
         </div>
+      </div>
     </>
   )
 }

@@ -1,18 +1,11 @@
-import StoreContext from "../../../storeContext";
+import { connect } from "react-redux";
 import NavTabs from "./NavTabs";
 
-const NavTabsContainer = () => {
-    return (
-        <StoreContext.Consumer>
-            {
-                (store) => {
-                    return (
-                        <NavTabs tabLinks={store.getState().profileReducer.tabLinks} />
-                    )
-                }
-            }
-        </StoreContext.Consumer>
-    )
+const mapStateToProps = (state) => {
+    return {
+        tabLinks: state.profileReducer.tabLinks,
+    }
 }
 
+const NavTabsContainer = connect(mapStateToProps)(NavTabs);
 export default NavTabsContainer;
