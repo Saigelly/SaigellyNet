@@ -1,4 +1,5 @@
-import s from "./UserCard.module.css"
+import s from "./UserCard.module.css";
+import userAvatar from "../../../assets/images/user.png";
 
 const UserCard = ({ userData, follow, unfollow }) => {
 
@@ -7,18 +8,20 @@ const UserCard = ({ userData, follow, unfollow }) => {
             {/* Добавиьт бэккграунд к аватарке */}
             <div className={s.avatar}>
                 <a href="#">
-                    <img src={userData.avatarURL} />
+                    <img src={userData.photos.small !== null
+                        ? userData.photos.small
+                        : userAvatar} />
                 </a>
             </div>
             <div className={s.userInfo}>
                 <p className={s.userName}>
-                    {`${userData.name.firstName} ${userData.name.lastName}`}
+                    {userData.name}
                 </p>
                 <h3 className={s.status}>
                     {userData.status}
                 </h3>
                 <p className={s.location}>
-                    {`${userData.location.cityName}, ${userData.location.country}`}
+                    {`${`userData.location.cityName`}, ${`userData.location.country`}`}
                 </p>
             </div>
             <div className={s.buttons}>
