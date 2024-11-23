@@ -12,15 +12,17 @@ const Users = (props) => {
 
     return (
         <div className={s.users}>
+            <ul className={s.paginationsLinks}>
             {pagination.map(p => {
                 return (
-                    <span
+                    <li
                         key={p}
-                        className={`${p === props.currentPage && s.currentPage}`}
+                        className={`${s.pages} ${p === props.currentPage && s.currentPage}`}
                         onClick={() => props.onPageClick(p)}
-                    >{p}</span>
+                    >{p}</li>
                 )
             })}
+            </ul>
             <ul className={s.usersList}>
                 {props.users.map((u) =>
                     <UserCard
