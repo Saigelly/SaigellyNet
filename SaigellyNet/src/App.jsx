@@ -9,9 +9,6 @@ import Settings from './components/Settings/Settings'
 import NavbarContainer from './components/Navbar/NavbarContainer'
 import UsersContainer from './components/Users/UsersContainer'
 
-
-
-
 function App() {
 
   return (
