@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 const root = createRoot(document.getElementById('root'));
-
+  Window.store = store;
 
 const rerenderEntireTree = () => {
   Window.store = store;
