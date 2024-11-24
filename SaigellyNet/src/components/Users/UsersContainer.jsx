@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC } from "../../Redux/usersReducer";
+import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, toggleIsFetchingAC, unfollowAC } from "../../Redux/usersReducer";
 import Users from "./Users";
 import React from "react";
 import axios from "axios";
@@ -8,16 +8,20 @@ class UsersContainer extends React.Component {
     componentDidMount = () => {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.usersOnPage}`)
             .then(response => {
+                this.props.setIsFetching(true);
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount);
+                this.props.setIsFetching(false);
             })
             .catch(e => console.log(e))
     }
     onPageClick = (pageNumber) => {
+        this.props.setIsFetching(true);
         this.props.setCurrentPage(pageNumber);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.usersOnPage}`)
             .then(response => {
                 this.props.setUsers(response.data.items);
+                this.props.setIsFetching(false);
             })
             .catch(e => console.log(e))
     }
@@ -29,7 +33,8 @@ class UsersContainer extends React.Component {
             onPageClick={this.onPageClick}
             follow={this.props.follow}
             unfollow={this.props.unfollow}
-            users={this.props.users} />
+            users={this.props.users}
+            isFetching={this.props.isFetching} />
     }
 }
 
@@ -39,6 +44,7 @@ const mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         usersOnPage: state.usersPage.usersOnPage,
         totalUsersCount: state.usersPage.totalUsersCount,
+        isFetching: state.usersPage.isFetching,
     }
 }
 
@@ -58,6 +64,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         setCurrentPage: (currentPage) => {
             dispatch(setCurrentPageAC(currentPage));
+        },
+        setIsFetching: (isFetching) => {
+            dispatch(toggleIsFetchingAC(isFetching));
         },
     }
 }

@@ -1,6 +1,7 @@
 import UserCard from "./UserCard/UserCard";
 import s from "./Users.module.css"
 import React from "react";
+import Preloader from "../common/Preloader/Preloader";
 
 const Users = (props) => {
     const pagination = [];
@@ -13,24 +14,28 @@ const Users = (props) => {
     return (
         <div className={s.users}>
             <ul className={s.paginationsLinks}>
-            {pagination.map(p => {
-                return (
-                    <li
-                        key={p}
-                        className={`${s.pages} ${p === props.currentPage && s.currentPage}`}
-                        onClick={() => props.onPageClick(p)}
-                    >{p}</li>
-                )
-            })}
+                {pagination.map(p => {
+                    return (
+                        <li
+                            key={p}
+                            className={`${s.pages} ${p === props.currentPage && s.currentPage}`}
+                            onClick={() => props.onPageClick(p)}
+                        >{p}</li>
+                    )
+                })}
             </ul>
-            <ul className={s.usersList}>
-                {props.users.map((u) =>
-                    <UserCard
-                        userData={u}
-                        follow={props.follow}
-                        unfollow={props.unfollow}
-                        key={u.id} />)}
-            </ul>
+            {props.isFetching
+                ? <Preloader />
+                : <ul className={s.usersList}>
+                    {props.users.map((u) =>
+                        <UserCard
+                            userData={u}
+                            follow={props.follow}
+                            unfollow={props.unfollow}
+                            key={u.id} />)}
+                </ul>
+            }
+
         </div>
     )
 }
