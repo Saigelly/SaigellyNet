@@ -4,6 +4,7 @@ const SET_PROFILE = "SET-PROFILE";
 
 const initialState = {
     profile: null,
+    
     socialItems: [
         { link: "#", imgSrc: "/src/assets/github.svg", imgAlt: "github" },
         { link: "#", imgSrc: "/src/assets/github.svg", imgAlt: "github" },
@@ -15,10 +16,10 @@ const initialState = {
         { text: "Просмотров: ", value: 12 },
     ],
     tabLinks: [
-        { path: "/profile/home", label: "Стена" },
-        { path: "/profile/about", label: "Обо мне" },
-        { path: "/profile/friends", label: "Друзья" },
-        { path: "/profile/gallery", label: "Фото" },
+        { path: "home", label: "Стена" },
+        { path: "about", label: "Обо мне" },
+        { path: "friends", label: "Друзья" },
+        { path: "gallery", label: "Фото" },
     ],
     posts: [
         {

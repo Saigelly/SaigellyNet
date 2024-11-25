@@ -3,12 +3,11 @@ import userAvatar from "../../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
 
 const UserCard = ({ userData, follow, unfollow }) => {
-
     return (
 
         <li className={s.item}>
             {/* Добавиьт бэккграунд к аватарке */}
-            <NavLink to={"/profile/2/home"}>
+            <NavLink to={`/profile/${userData.id}/home`}>
                 <div className={s.avatar}>
                     <a href="#">
                         <img src={userData.photos.small !== null

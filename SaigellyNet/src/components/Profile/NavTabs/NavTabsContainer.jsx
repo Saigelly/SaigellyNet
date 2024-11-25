@@ -4,6 +4,7 @@ import NavTabs from "./NavTabs";
 const mapStateToProps = (state) => {
     return {
         tabLinks: state.profileReducer.tabLinks,
+        userID: !state.profile.userId ? null : state.profile.userId,
     }
 }
 

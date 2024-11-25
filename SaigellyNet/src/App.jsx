@@ -10,7 +10,6 @@ import UsersContainer from './components/Users/UsersContainer'
 import ProfileContainer from './components/Profile/ProfileContainer'
 
 function App() {
-
   return (
     <>
       <div className="wrapper-app">
@@ -18,7 +17,7 @@ function App() {
         <NavbarContainer />
         <div className="wrapper-app__content">
           <Routes>
-            <Route path="/profile/*"
+            <Route path="/profile/:userID?/*"
               element={<ProfileContainer />} />
             <Route path="/dialogues/*"
               element={<Dialogues />} />
