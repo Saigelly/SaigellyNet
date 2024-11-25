@@ -4,6 +4,9 @@ import Navbar from "./Navbar";
 const mapStateToProps = (state) => {
     return {
         state: state.navbarReducer,
+        userId: state.authReducer.userId,
+        isAuth: state.authReducer.isAuth,
+
     }
 }
 

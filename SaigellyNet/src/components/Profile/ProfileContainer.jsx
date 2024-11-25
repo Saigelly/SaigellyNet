@@ -1,7 +1,3 @@
-import { Route, Routes } from "react-router-dom";
-import MyPostsContainer from "./MyPosts/Posts/MyPostsContainer";
-import UserHeaderContainer from "./UserHeader/UserHeaderContainer";
-import NavTabsContainer from "./NavTabs/NavTabsContainer";
 import Profile from "./Profile";
 import React from "react";
 import { connect } from "react-redux";
@@ -11,13 +7,13 @@ import withRouter from "../../HOC/withRouter";
 
 
 class ProfileContainer extends React.Component {
-    
+
     componentDidMount = () => {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.router.params.userID}`)
-            .then(response => {
-                this.props.setProfile(response.data);
-            })
-            .catch(e => console.log(e))
+            axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.router.params.userID}`)
+                .then(response => {
+                    this.props.setProfile(response.data);
+                })
+                .catch(e => console.log(e))
     }
 
     render = () => {
@@ -26,7 +22,8 @@ class ProfileContainer extends React.Component {
             statsValue={this.props.statsValue}
             profile={this.props.profile}
             tabLinks={this.props.tabLinks}
-            userID={this.props.router.params.userID} />
+            userID={this.props.router.params.userID}
+        />
     }
 }
 
@@ -37,4 +34,4 @@ const mapStateToProps = (state) => ({
     tabLinks: state.profileReducer.tabLinks,
 })
 
-export default connect(mapStateToProps, {setProfile})(withRouter(ProfileContainer));
+export default connect(mapStateToProps, { setProfile })(withRouter(ProfileContainer));

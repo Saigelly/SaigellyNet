@@ -5,3 +5,8 @@
 .header img{
     height: 45px;
 }
+.login{
+    float: right;
+    font-size: 24px;
+    color: #fff;
+}
