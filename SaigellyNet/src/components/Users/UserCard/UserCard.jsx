@@ -1,8 +1,29 @@
 import s from "./UserCard.module.css";
 import userAvatar from "../../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { usersApi } from "../../../api/api";
 
 const UserCard = ({ userData, follow, unfollow }) => {
+
+    const postFollow = () => {
+        usersApi.postFollow(userData.id)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    follow(userData.id);
+                }
+            })
+            .catch(e => console.log(e));
+    }
+    const postUnfollow = () => {
+        usersApi.postUnfollow(userData.id)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    unfollow(userData.id);
+                }
+            })
+            .catch(e => console.log(e));
+    }
     return (
 
         <li className={s.item}>
@@ -29,13 +50,12 @@ const UserCard = ({ userData, follow, unfollow }) => {
             </div>
             <div className={s.buttons}>
 
-                {userData.followed
+                {!userData.followed
                     ? <button className={`${s.btn} ${s.btn_follow}`}
-                        onClick={() => unfollow(userData.id)}
+                        onClick={postFollow}
                     >Подписаться</button>
                     : <button className={`${s.btn} ${s.btn_unfollow}`}
-                        onClick={() => follow(userData.id)}
-
+                        onClick={postUnfollow}
                     >Отписаться</button>
                 }
             </div>
