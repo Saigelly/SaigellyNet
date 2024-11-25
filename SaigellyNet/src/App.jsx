@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import Profile from './components/Profile/Profile'
 import Header from './components/Header/Header'
 import Dialogues from './components/Dialogues/Dialogues'
 import News from './components/News/News'
@@ -8,6 +7,7 @@ import Music from './components/Music/Music'
 import Settings from './components/Settings/Settings'
 import NavbarContainer from './components/Navbar/NavbarContainer'
 import UsersContainer from './components/Users/UsersContainer'
+import ProfileContainer from './components/Profile/ProfileContainer'
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
         <div className="wrapper-app__content">
           <Routes>
             <Route path="/profile/*"
-              element={<Profile />} />
+              element={<ProfileContainer />} />
             <Route path="/dialogues/*"
               element={<Dialogues />} />
             <Route path="/users" element={<UsersContainer />} />
