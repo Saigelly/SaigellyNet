@@ -52,7 +52,7 @@ a img {
 }
 
 .btn {
-    border-color: #34b7f1;
+    border: 1px solid #34b7f1;
     background-color: #34b7f1;
     color: #fff;
     width: 150px;
@@ -62,8 +62,18 @@ a img {
     line-height: 22px;
 }
 
+.btn:disabled {
+    border-color: #34b7f1;
+    background-color: #278bb6;
+}
+
 .btn_unfollow{
-    border-color: #f13457;
+    border: 1px solid #f13457;
     background-color: #f13457;
     
+}
+
+.btn_unfollow:disabled{
+    border-color: #f13457;
+    background-color: #a0203a;
 }

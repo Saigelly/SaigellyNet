@@ -1,13 +1,13 @@
 import s from "./Navbar.module.css"
 import NavItem from "./NavItem/NavItem";
 
-const Navbar = ({state}) => {
+const Navbar = (props) => {
 
     return (
         <nav className={s.nav}>
             <div className="burger">бургер</div>
             <ul className={s.navList}>
-                {state.navItems.map((item, index) => <NavItem item={item} key={index} />)}
+                {props.state.navItems.map((item, index) => <NavItem item={item} key={index} userId={props.userId} setProfile={props.setProfile}/>)}
             </ul>
         </nav>
     )

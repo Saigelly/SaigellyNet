@@ -30,9 +30,10 @@ const Users = (props) => {
                     {props.users.map((u) =>
                         <UserCard
                             userData={u}
-                            follow={props.follow}
-                            unfollow={props.unfollow}
-                            key={u.id} />)}
+                            postFollow={props.postFollow}
+                            postUnfollow={props.postUnfollow}
+                            key={u.id}
+                            fallowingInProgress={props.fallowingInProgress} />)}
                 </ul>
             }
 

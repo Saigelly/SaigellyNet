@@ -1,12 +1,11 @@
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import s from "./Profile.module.css"
-import MyPostsContainer from "./MyPosts/Posts/MyPostsContainer";
 import UserHeader from "./UserHeader/UserHeader";
 import Preloader from "../common/Preloader/Preloader";
 import NavTabs from "./NavTabs/NavTabs";
 
 const Profile = (props) => {
-    
+
     return (
         !props.profile
             ? <Preloader />
@@ -18,16 +17,7 @@ const Profile = (props) => {
                 <NavTabs
                     userId={props.profile.userId}
                     tabLinks={props.tabLinks} />
-                <Routes>
-                    <Route path={`/home`}
-                        element={<MyPostsContainer />} />
-                    <Route index
-                        element={<MyPostsContainer />} />
-                    <Route path={`/about`} element={<div> Обо МНЕ</div>} />
-                    <Route path={`/friends`} element={<div>Друзья</div>} />
-                    <Route path={`/gallery`} element={<div> Галерея</div>} />
-                </Routes>
-
+                <Outlet />
             </section>
     )
 }

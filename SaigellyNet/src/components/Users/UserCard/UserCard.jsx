@@ -1,29 +1,9 @@
 import s from "./UserCard.module.css";
 import userAvatar from "../../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
-import { usersApi } from "../../../api/api";
 
-const UserCard = ({ userData, follow, unfollow }) => {
+const UserCard = ({ userData, postFollow, postUnfollow, fallowingInProgress }) => {
 
-    const postFollow = () => {
-        usersApi.postFollow(userData.id)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    follow(userData.id);
-                }
-            })
-            .catch(e => console.log(e));
-    }
-    const postUnfollow = () => {
-        usersApi.postUnfollow(userData.id)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    unfollow(userData.id);
-                }
-            })
-            .catch(e => console.log(e));
-    }
     return (
 
         <li className={s.item}>
@@ -51,11 +31,11 @@ const UserCard = ({ userData, follow, unfollow }) => {
             <div className={s.buttons}>
 
                 {!userData.followed
-                    ? <button className={`${s.btn} ${s.btn_follow}`}
-                        onClick={postFollow}
+                    ? <button disabled={fallowingInProgress.some(id => userData.id === id )} className={`${s.btn} ${s.btn_follow}`}
+                        onClick={() => postFollow(userData.id)}
                     >Подписаться</button>
-                    : <button className={`${s.btn} ${s.btn_unfollow}`}
-                        onClick={postUnfollow}
+                    : <button disabled={fallowingInProgress.some(id => userData.id === id )} className={`${s.btn} ${s.btn_unfollow}`}
+                        onClick={() => postUnfollow(userData.id)}
                     >Отписаться</button>
                 }
             </div>
