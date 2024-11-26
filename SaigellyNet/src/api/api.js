@@ -12,22 +12,25 @@ export const usersApi = {
     getUsers(page = 1, count = 5) {
         return instance.get(`users?page=${page}&count=${count}`).then(response => response.data)
     },
-    getFollows(userId) {
+    // getFollows(userId) {
+    //     return instance.post(`follow/${userId}`).then(response => response.data)
+    // },
+    follow(userId) {
         return instance.post(`follow/${userId}`).then(response => response.data)
     },
-    postFollow(userId) {
-        return instance.post(`follow/${userId}`).then(response => response.data)
-    },
-    postUnfollow(userId) {
+    unfollow(userId) {
         return instance.delete(`follow/${userId}`).then(response => response.data)
     },
     auth() {
         return instance.get("auth/me").then(responce => responce.data)
-    }
-} 
-
-export const profileApi = {
+    },
     getProfile(userID) {
         return instance.get(`profile/${userID}`).then(response => response.data)
+    },
+} 
+
+export const authAPI = {
+    me () {
+        return instance.get("auth/me").then(responce => responce.data)
     },
 }

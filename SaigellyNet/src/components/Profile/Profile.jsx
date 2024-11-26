@@ -10,13 +10,8 @@ const Profile = (props) => {
         !props.profile
             ? <Preloader />
             : <section className={s.profile}>
-                <UserHeader
-                    socialItems={props.socialItems}
-                    statsValue={props.statsValue}
-                    profile={props.profile} />
-                <NavTabs
-                    userId={props.profile.userId}
-                    tabLinks={props.tabLinks} />
+                <UserHeader statsValue={props.statsValue} profile={props.profile} />
+                <NavTabs userId={props.profile.userId} tabLinks={props.tabLinks} />
                 <Outlet />
             </section>
     )

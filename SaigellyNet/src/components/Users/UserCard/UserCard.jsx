@@ -2,7 +2,7 @@ import s from "./UserCard.module.css";
 import userAvatar from "../../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
 
-const UserCard = ({ userData, postFollow, postUnfollow, fallowingInProgress }) => {
+const UserCard = ({ userData, follow, unfollow, fallowingInProgress }) => {
 
     return (
 
@@ -32,10 +32,10 @@ const UserCard = ({ userData, postFollow, postUnfollow, fallowingInProgress }) =
 
                 {!userData.followed
                     ? <button disabled={fallowingInProgress.some(id => userData.id === id )} className={`${s.btn} ${s.btn_follow}`}
-                        onClick={() => postFollow(userData.id)}
+                        onClick={() => follow(userData.id)}
                     >Подписаться</button>
                     : <button disabled={fallowingInProgress.some(id => userData.id === id )} className={`${s.btn} ${s.btn_unfollow}`}
-                        onClick={() => postUnfollow(userData.id)}
+                        onClick={() => unfollow(userData.id)}
                     >Отписаться</button>
                 }
             </div>

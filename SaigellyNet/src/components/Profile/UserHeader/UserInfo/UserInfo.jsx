@@ -12,7 +12,7 @@ const UserInfo = (props) => {
             <div className={s.descr}>
                 <h3 className={s.name}> {props.profile.fullName}</h3>
                 <p className={s.status}>{props.profile.aboutMe}</p>
-                <SocialList socialItems={props.socialItems} contacts={props.profile.contacts}/>
+                <SocialList contacts={props.profile.contacts}/>
                 
             </div>
         </div>
