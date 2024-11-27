@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import Dialogues from './components/Dialogues/Dialogues'
 import News from './components/News/News'
 import Music from './components/Music/Music'
 import Settings from './components/Settings/Settings'
@@ -9,6 +8,8 @@ import UsersContainer from './components/Users/UsersContainer'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import HeaderContainer from './components/Header/HeaderContainer'
 import MyPostsContainer from './components/Profile/MyPosts/Posts/MyPostsContainer'
+import Login from './components/Login/Login'
+import DialoguesContainer from './components/Dialogues/DialoguesContainer'
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
               <Route path={`friends`} element={<div>Друзья</div>} />
               <Route path={`gallery`} element={<div> Галерея</div>} />
             </Route>
-            <Route path="/dialogues/*" element={<Dialogues />} />
+            <Route path={`login`} element={<Login />}/>
+            <Route path="/dialogues/*" element={<DialoguesContainer />} />
             <Route path="/users" element={<UsersContainer />} />
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />

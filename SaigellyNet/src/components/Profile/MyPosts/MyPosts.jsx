@@ -5,6 +5,7 @@ import NewPost from "./NewPost/NewPost";
 
 const MyPosts = (props) => {
 
+   
     return (
         <div className={s.myPosts}>
             <NewPost

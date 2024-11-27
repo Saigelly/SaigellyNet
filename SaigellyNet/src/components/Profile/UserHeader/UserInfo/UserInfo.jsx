@@ -1,5 +1,6 @@
 import SocialList from "./SocialList/SocialList";
 import s from "./UserInfo.module.css"
+import ProfileStatus from "./ProfileStatus/ProfileStatus"
 
 const UserInfo = (props) => {
 
@@ -11,13 +12,12 @@ const UserInfo = (props) => {
             </a>
             <div className={s.descr}>
                 <h3 className={s.name}> {props.profile.fullName}</h3>
-                <p className={s.status}>{props.profile.aboutMe}</p>
-                <SocialList contacts={props.profile.contacts}/>
-                
+                <ProfileStatus profileStatus={props.profileStatus} putProfileStatus={props.putProfileStatus}/>
+                <SocialList contacts={props.profile.contacts} />
             </div>
         </div>
-        
-       
+
+
     )
 }
 

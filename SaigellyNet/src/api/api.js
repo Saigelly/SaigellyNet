@@ -25,12 +25,25 @@ export const usersApi = {
         return instance.get("auth/me").then(responce => responce.data)
     },
     getProfile(userID) {
-        return instance.get(`profile/${userID}`).then(response => response.data)
+        console.warn("method getProfile is now piece profileAPI. replace please")
+        return profileAPI.getProfile(userID)
     },
-} 
+}
 
 export const authAPI = {
-    me () {
+    me() {
         return instance.get("auth/me").then(responce => responce.data)
+    },
+}
+
+export const profileAPI = {
+    getProfile(userId) {
+        return instance.get(`profile/${userId}`).then(response => response.data)
+    },
+    getProfileStatus(userId) {
+        return instance.get(`profile/status/${userId}`)
+    },
+    putProfileStatus(status) {
+        return instance.put(`profile/status/`, { status }).then(response => response.data)
     },
 }

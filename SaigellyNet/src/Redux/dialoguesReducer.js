@@ -54,8 +54,8 @@ const dialoguesReducer = (state = initialState, action) => {
     }
 }
 
-export const onAddMessageClickCreator = () => ({ type: ADD_MESSAGE });
-export const onNewMessageTextUpdateCreator = (text) =>
+export const onAddMessageClick = () => ({ type: ADD_MESSAGE });
+export const onNewMessageTextUpdate = (text) =>
     ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: text });
 
 export default dialoguesReducer;

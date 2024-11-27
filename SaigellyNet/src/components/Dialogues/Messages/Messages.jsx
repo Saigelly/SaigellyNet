@@ -8,11 +8,11 @@ const Messages = (props) => {
     const newMessageElement = React.createRef();
 
     const addNewMessage = () => {
-        props.onAddMessage();
+        props.onAddMessageClick();
     }
     const onMessageChange = () => {
         const text = newMessageElement.current.value;
-        props.onMessageChange(text);
+        props.onNewMessageTextUpdate(text);
     }
 
     return (
