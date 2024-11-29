@@ -8,8 +8,8 @@ import UsersContainer from './components/Users/UsersContainer'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import HeaderContainer from './components/Header/HeaderContainer'
 import MyPostsContainer from './components/Profile/MyPosts/Posts/MyPostsContainer'
-import Login from './components/Login/Login'
 import DialoguesContainer from './components/Dialogues/DialoguesContainer'
+import LoginContainer from './components/Login/LoginContainer'
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
               <Route path={`friends`} element={<div>Друзья</div>} />
               <Route path={`gallery`} element={<div> Галерея</div>} />
             </Route>
-            <Route path={`login`} element={<Login />}/>
+            <Route path={`login`} element={<LoginContainer />}/>
             <Route path="/dialogues/*" element={<DialoguesContainer />} />
             <Route path="/users" element={<UsersContainer />} />
             <Route path="/news" element={<News />} />

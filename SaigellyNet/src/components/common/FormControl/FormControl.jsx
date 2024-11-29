@@ -1,11 +1,10 @@
-import { Form } from "react-router-dom"
+import s from "./FormControl.module.css"
 
-export const FormRedux = (props) => {
+export const Input = ({ input, meta, ...props }) => {
     return (
-        < Form
-            initialValues={props.initialValues}
-            onSubmit={props.newPost}>
-            {props.children}
-        </Form>
+        <div className={meta.error && meta.touched && s.error}>
+            <input  {...input} placeholder={props.placeholder} />
+            {meta.error && meta.touched && <span>{meta.error}</span>}
+        </div>
     )
 }

@@ -34,6 +34,12 @@ export const authAPI = {
     me() {
         return instance.get("auth/me").then(responce => responce.data)
     },
+    login(dataAuth) {
+        return instance.post("auth/login", dataAuth).then(responce => responce.data)
+    },
+    logOut() {
+        return instance.delete("auth/me").then(response => response.data)
+    }
 }
 
 export const profileAPI = {

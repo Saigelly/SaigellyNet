@@ -1,6 +1,7 @@
 import { authAPI } from "../api/api";
 
 const SET_USER_DATA = "SET-USER-DATA";
+const CLEAR_USER_DATA = "CLEAR-USER-DATA"
 
 const initialState = {
     userId: null,
@@ -18,12 +19,20 @@ const authReducer = (state = initialState, action) => {
                 ...action.data,
                 isAuth: true
             }
+        case CLEAR_USER_DATA:
+            return {
+                userId: null,
+                email: null,
+                login: null,
+                isAuth: false
+            }
         default:
             return state;
     }
 }
 
 export const setUserData = (userId, login, email) => ({ type: SET_USER_DATA, data: { userId, login, email } });
+export const clearUserData = () => ({ type: CLEAR_USER_DATA })
 
 export const getAuthUserData = () => {
     return (dispatch) => {
@@ -34,6 +43,33 @@ export const getAuthUserData = () => {
             }
         })
             .catch(e => console.log(e))
+    }
+}
+
+export const putLogin = (dataAuth) => {
+    return (dispatch) => {
+        authAPI.login(dataAuth)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    authAPI.me().then(data => {
+                        if (data.resultCode === 0) {
+                            const { id, login, email } = data.data;
+                            dispatch(setUserData(id, login, email));
+                        }
+                    })
+                }
+            }).catch(e => console.log(e))
+    }
+}
+
+
+export const logout = () => {
+    return (dispatch) => {
+        authAPI.logOut().then(data => {
+            if (data.resultCode === 0) {
+                dispatch(clearUserData())
+            }
+        })
     }
 }
 

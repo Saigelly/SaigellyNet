@@ -98,7 +98,6 @@ export const putProfileStatus = (status) => (dispatch) => {
     profileAPI.putProfileStatus(status)
         .then(data => {
             if (data.resultCode === 0) {
-                debugger;
                 dispatch(setProfileStatus(status))
             }
         })

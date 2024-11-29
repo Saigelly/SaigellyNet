@@ -1,58 +1,29 @@
-import { Field, Form } from "react-final-form"
+import { Form } from "react-final-form"
 import s from "./Login.module.css"
-import { requiredField } from "../../utilities/validates"
+import LoginForm from "./LoginForm/LoginForm"
 
-const onSubmit = (formData) => {
-    console.log(formData)
-}
 
 const initialValues = {
-    login: "",
-    password: "",
+    login: "Saigelly@gmail.com",
+    password: "e5bhfafef",
     rememberMe: false
 }
 
-const Login = () => {
+const Login = (props) => {
+    const logoutProfile = (e) => {
+        e.preventDefault();
+        props.logout();
+    }
     return (
         <div>
             <h1>LOGIN</h1>
             < Form
                 initialValues={initialValues}
-                onSubmit={onSubmit}
+                onSubmit={props.onSubmit}
                 component={LoginForm}>
             </Form>
+            {/* <button onClick={logoutProfile}>выйти</button> */}
         </div>
-    )
-}
-const Input = ({ input, meta, ...props }) => {
-    return (
-        <div className={meta.error && meta.touched && s.error}>
-            <input  {...input} placeholder={props.placeholder} />
-            {meta.error && meta.touched && <span>{meta.error}</span>}
-        </div>
-    )
-}
-
-const LoginForm = (props) => {
-
-    return (
-        <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field name="login" component={Input} placeholder="Логин"
-                 validate={requiredField}/>
-            </div>
-            <div>
-                <Field name="password" component={Input} placeholder="Пароль" 
-                validate={requiredField}/>
-            </div>
-            <div>
-                <Field name="rememberMe" component={Input} type="checkbox" />
-                <label>Запомнить меня</label>
-            </div>
-            <div>
-                <button>Войти</button>
-            </div>
-        </form>
     )
 }
 
