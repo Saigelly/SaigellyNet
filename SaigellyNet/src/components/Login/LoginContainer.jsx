@@ -2,43 +2,34 @@ import { compose } from "redux"
 import { connect } from "react-redux"
 import { putLogin } from "../../Redux/authReducer"
 import Login from "./Login"
-import withLoginRedirect from "../../HOC/withLoginRedirect"
+import { Navigate } from "react-router-dom"
 
 
 
 const initialValues = {
-    login: "Saigelly@gmail.com",
-    password: "e5bhfafef",
+    login: "",
+    password: "",
     rememberMe: false
 }
 
 const LoginContainer = (props) => {
-    // const navigate = useNavigate();
 
-    const onSubmit = (formData) => {
-        const data = {
-            email: formData.login,
-            password: formData.password
-        }
-        props.putLogin(data)
-        // .then(() => navigate(`/profile/${props.userId}`));
-        
+    const onSubmit = ({email, password, remmemberMe = false}) => {
+        props.putLogin(email, password, remmemberMe)
     }
     
+    if (props.isAuth === true) return <Navigate to={`/profile/home`} />
+
     return (
         <Login {...props} onSubmit={onSubmit} />
     )
 }
 
-
 const mapStateToProps = (state) => ({
     isAuth: state.authReducer.isAuth,
-    userId: state.authReducer.userId,
-    
 })
 
 export default compose(
-    withLoginRedirect,
     connect(mapStateToProps, { putLogin })
 )(LoginContainer)
 

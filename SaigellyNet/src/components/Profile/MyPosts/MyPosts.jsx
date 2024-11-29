@@ -1,13 +1,8 @@
 import React from "react";
 import s from "./MyPosts.module.css"
-import Post from "./Posts/Post/Post";
 import { Form } from "react-final-form";
 import NewPostForm from "./NewPost/NewPostForm";
 import Posts from "./Posts/Posts";
-
-
-
-
 
 const MyPosts = (props) => {
 
