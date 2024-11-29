@@ -1,8 +1,9 @@
 import { Field} from "react-final-form"
-import { required } from "../../../utilities/validates";
+import { composeValidators, maxLength, required } from "../../../utilities/validates";
 import { Input } from "../../common/FormControl/FormControl";
 
 const LoginForm = (props) => {
+    const maxLength10  = maxLength(10)
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
@@ -11,7 +12,7 @@ const LoginForm = (props) => {
             </div>
             <div>
                 <Field name="password" component={Input} placeholder="Пароль"
-                    validate={required} />
+                    validate={required} type="password"/>
             </div>
             <div>
                 <Field name="rememberMe" component={Input} type="checkbox" />

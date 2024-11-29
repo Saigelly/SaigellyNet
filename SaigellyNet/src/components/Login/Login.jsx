@@ -4,16 +4,12 @@ import LoginForm from "./LoginForm/LoginForm"
 
 
 const initialValues = {
-    login: "Saigelly@gmail.com",
-    password: "e5bhfafef",
+    login: "",
+    password: "",
     rememberMe: false
 }
 
 const Login = (props) => {
-    const logoutProfile = (e) => {
-        e.preventDefault();
-        props.logout();
-    }
     return (
         <div>
             <h1>LOGIN</h1>
@@ -22,7 +18,6 @@ const Login = (props) => {
                 onSubmit={props.onSubmit}
                 component={LoginForm}>
             </Form>
-            {/* <button onClick={logoutProfile}>выйти</button> */}
         </div>
     )
 }
