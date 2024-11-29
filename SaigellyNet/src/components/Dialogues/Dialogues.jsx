@@ -6,11 +6,10 @@ const Dialogues = (props) => {
     return (
         <section className={s.dialogues}>
             <Chats chats={props.chats} />
+
             <Messages
-                newMessageText={props.newMessageText}
                 messages={props.messages}
-                onAddMessageClick={props.onAddMessageClick}
-                onNewMessageTextUpdate={props.onNewMessageTextUpdate} />
+                onAddMessageClick={props.onAddMessageClick}/>
         </section>
     )
 }

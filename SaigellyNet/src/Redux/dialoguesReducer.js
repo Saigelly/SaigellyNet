@@ -29,7 +29,6 @@ const initialState = {
             imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
         },
     ],
-    newMessageText: ""
 }
 
 
@@ -38,7 +37,7 @@ const dialoguesReducer = (state = initialState, action) => {
         case ADD_MESSAGE:
             const newMessage = {
                 id: 4,
-                text: state.newMessageText,
+                text: action.newMessageText,
                 userId: "1",
                 imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
             }
@@ -47,15 +46,12 @@ const dialoguesReducer = (state = initialState, action) => {
                 messages: [...state.messages, newMessage],
                 newMessageText: "",
             }
-        case UPDATE_NEW_MESSAGE_TEXT:
-            return { ...state, newMessageText: action.newText }
         default:
             return state;
     }
 }
 
-export const onAddMessageClick = () => ({ type: ADD_MESSAGE });
-export const onNewMessageTextUpdate = (text) =>
-    ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: text });
+export const onAddMessageClick = (newMessageText) => ({ type: ADD_MESSAGE, newMessageText });
+
 
 export default dialoguesReducer;

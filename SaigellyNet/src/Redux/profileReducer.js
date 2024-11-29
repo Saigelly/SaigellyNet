@@ -47,7 +47,7 @@ const initialState = {
             likeCount: 5
         },
     ],
-    newPostText: ""
+
 }
 
 const profileReduce = (state = initialState, action) => {
@@ -58,7 +58,7 @@ const profileReduce = (state = initialState, action) => {
                 id: "5",
                 path: "#",
                 imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
-                text: state.newPostText,
+                text: action.newPostText,
                 likeCount: 0
             };
             return {
@@ -77,11 +77,10 @@ const profileReduce = (state = initialState, action) => {
     }
 }
 
-export const onAddPostClickCreator = () => ({ type: ADD_POST });
+export const onAddPostClick = (newPostText) => ({ type: ADD_POST, newPostText });
 export const setProfile = (profile) => ({ type: SET_PROFILE, profile });
 export const setProfileStatus = (status) => ({ type: SET_PROFILE_STATUS, status });
-export const onNewPostTextUpdateCreator = (text) =>
-    ({ type: UPDATE_NEW_POST_TEXT, newText: text });
+
 
 export const getProfile = (userId) => (dispatch) => {
     profileAPI.getProfile(userId)
