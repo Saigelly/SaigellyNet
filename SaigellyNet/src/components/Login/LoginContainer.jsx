@@ -1,7 +1,8 @@
 import { compose } from "redux"
 import { connect } from "react-redux"
-import { logout, putLogin } from "../../Redux/authReducer"
+import { putLogin } from "../../Redux/authReducer"
 import Login from "./Login"
+import withLoginRedirect from "../../HOC/withLoginRedirect"
 
 
 
@@ -12,13 +13,16 @@ const initialValues = {
 }
 
 const LoginContainer = (props) => {
+    // const navigate = useNavigate();
+
     const onSubmit = (formData) => {
         const data = {
             email: formData.login,
             password: formData.password
         }
-        console.log(data)
         props.putLogin(data)
+        // .then(() => navigate(`/profile/${props.userId}`));
+        
     }
     
     return (
@@ -27,9 +31,14 @@ const LoginContainer = (props) => {
 }
 
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+    isAuth: state.authReducer.isAuth,
+    userId: state.authReducer.userId,
+    
+})
 
 export default compose(
+    withLoginRedirect,
     connect(mapStateToProps, { putLogin })
 )(LoginContainer)
 

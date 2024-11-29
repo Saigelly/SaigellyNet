@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import { authAPI } from "../api/api";
 
 const SET_USER_DATA = "SET-USER-DATA";
@@ -65,7 +66,7 @@ export const putLogin = (dataAuth) => {
 
 export const logout = () => {
     return (dispatch) => {
-        authAPI.logOut().then(data => {
+        authAPI.logout().then(data => {
             if (data.resultCode === 0) {
                 dispatch(clearUserData())
             }

@@ -13,7 +13,10 @@ const Header = (props) => {
             </nav> */}
             {!props.isAuth
                 ? <a href="/login" className={s.login}>Войти</a>
-                : <div className={s.login}>{props.login}</div>}
+                : <div className={s.login}>
+                    <a href="">{props.login}</a>
+                    <button onClick={props.logoutProfile}>Выйти</button>
+                    </div>}
         </header>
     )
 }

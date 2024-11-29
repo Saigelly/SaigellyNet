@@ -37,8 +37,8 @@ export const authAPI = {
     login(dataAuth) {
         return instance.post("auth/login", dataAuth).then(responce => responce.data)
     },
-    logOut() {
-        return instance.delete("auth/me").then(response => response.data)
+    logout() {
+        return instance.delete("auth/login").then(response => response.data)
     }
 }
 
