@@ -1,11 +1,10 @@
 import SocialItem from "./SocialItem/SocialItem";
 import s from "./SocialList.module.css"
 
-const SocialList = ({socialItems}) => {
-    
+const SocialList = (props) => {
     return (
         <ul className={s.list}>
-            {socialItems.map((social, index) => <SocialItem item={social} key={index}/>)}
+            {Object.entries(props.contacts).map((c, index) => <SocialItem item={c} key={index}/>)}
         </ul>
     )
 }

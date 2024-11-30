@@ -32,7 +32,8 @@ const Users = (props) => {
                             userData={u}
                             follow={props.follow}
                             unfollow={props.unfollow}
-                            key={u.id} />)}
+                            key={u.id}
+                            fallowingInProgress={props.fallowingInProgress} />)}
                 </ul>
             }
 

@@ -1,7 +1,13 @@
+import { profileAPI } from "../api/api";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const SET_PROFILE = "SET-PROFILE";
+const SET_PROFILE_STATUS = "SET-PROFILE-STATUS";
 
 const initialState = {
+    profile: null,
+    profileStatus: "",
     socialItems: [
         { link: "#", imgSrc: "/src/assets/github.svg", imgAlt: "github" },
         { link: "#", imgSrc: "/src/assets/github.svg", imgAlt: "github" },
@@ -13,10 +19,10 @@ const initialState = {
         { text: "Просмотров: ", value: 12 },
     ],
     tabLinks: [
-        { path: "/profile/home", label: "Стена" },
-        { path: "/profile/about", label: "Обо мне" },
-        { path: "/profile/friends", label: "Друзья" },
-        { path: "/profile/gallery", label: "Фото" },
+        { path: "home", label: "Стена" },
+        { path: "about", label: "Обо мне" },
+        { path: "friends", label: "Друзья" },
+        { path: "gallery", label: "Фото" },
     ],
     posts: [
         {
@@ -41,7 +47,7 @@ const initialState = {
             likeCount: 5
         },
     ],
-    newPostText: ""
+
 }
 
 const profileReduce = (state = initialState, action) => {
@@ -52,7 +58,7 @@ const profileReduce = (state = initialState, action) => {
                 id: "5",
                 path: "#",
                 imgSrc: "https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13",
-                text: state.newPostText,
+                text: action.newPostText,
                 likeCount: 0
             };
             return {
@@ -62,13 +68,41 @@ const profileReduce = (state = initialState, action) => {
             }
         case UPDATE_NEW_POST_TEXT:
             return { ...state, newPostText: action.newText };
+        case SET_PROFILE:
+            return { ...state, profile: action.profile };
+        case SET_PROFILE_STATUS:
+            return { ...state, profileStatus: action.status }
         default:
             return state;
     }
 }
 
-export const onAddPostClickCreator = () => ({ type: ADD_POST });
-export const onNewPostTextUpdateCreator = (text) =>
-    ({ type: UPDATE_NEW_POST_TEXT, newText: text });
+export const onAddPostClick = (newPostText) => ({ type: ADD_POST, newPostText });
+export const setProfile = (profile) => ({ type: SET_PROFILE, profile });
+export const setProfileStatus = (status) => ({ type: SET_PROFILE_STATUS, status });
+
+
+export const getProfile = (userId) => (dispatch) => {
+    profileAPI.getProfile(userId)
+        .then(data => dispatch(setProfile(data)))
+        .catch(e => console.log(e))
+}
+export const getProfileStatus = (userId) => (dispatch) => {
+    profileAPI.getProfileStatus(userId)
+        .then(data => {
+            dispatch(setProfileStatus(data.data))
+        })
+        .catch(e => console.log(e))
+}
+export const putProfileStatus = (status) => (dispatch) => {
+    profileAPI.putProfileStatus(status)
+        .then(data => {
+            if (data.resultCode === 0) {
+                dispatch(setProfileStatus(status))
+            }
+        })
+        .catch(e => console.log(e))
+}
+
 
 export default profileReduce;

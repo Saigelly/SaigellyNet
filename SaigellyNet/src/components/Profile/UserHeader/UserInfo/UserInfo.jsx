@@ -1,21 +1,23 @@
 import SocialList from "./SocialList/SocialList";
 import s from "./UserInfo.module.css"
+import ProfileStatus from "./ProfileStatus/ProfileStatus"
 
-const UserInfo = ({socialItems}) => {
+const UserInfo = (props) => {
 
     return (
         <div className={s.userInfo}>
             <a href="#" className={s.avatar}>
-                <img src="https://avatars.mds.yandex.net/i?id=ffc20310cc4dc43bc0db7e94582ee01d5757e375-4884516-images-thumbs&n=13"
+                <img src={props.profile.photos.small}
                     alt="avatar" />
             </a>
             <div className={s.descr}>
-                <h3 className={s.name}> Молчанов Дмитрий</h3>
-                <p className={s.status}>Разрабатываю соцсеть</p>
-                <SocialList socialItems={socialItems}/>
-                
+                <h3 className={s.name}> {props.profile.fullName}</h3>
+                <ProfileStatus profileStatus={props.profileStatus} putProfileStatus={props.putProfileStatus}/>
+                <SocialList contacts={props.profile.contacts} />
             </div>
         </div>
+
+
     )
 }
 

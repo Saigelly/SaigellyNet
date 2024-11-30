@@ -1,18 +1,22 @@
 import s from "./UserCard.module.css";
 import userAvatar from "../../../assets/images/user.png";
+import { NavLink } from "react-router-dom";
 
-const UserCard = ({ userData, follow, unfollow }) => {
+const UserCard = ({ userData, follow, unfollow, fallowingInProgress }) => {
 
     return (
+
         <li className={s.item}>
             {/* Добавиьт бэккграунд к аватарке */}
-            <div className={s.avatar}>
-                <a href="#">
-                    <img src={userData.photos.small !== null
-                        ? userData.photos.small
-                        : userAvatar} />
-                </a>
-            </div>
+            <NavLink to={`/profile/${userData.id}/home`}>
+                <div className={s.avatar}>
+                    <a href="#">
+                        <img src={userData.photos.small !== null
+                            ? userData.photos.small
+                            : userAvatar} />
+                    </a>
+                </div>
+            </NavLink>
             <div className={s.userInfo}>
                 <p className={s.userName}>
                     {userData.name}
@@ -26,13 +30,12 @@ const UserCard = ({ userData, follow, unfollow }) => {
             </div>
             <div className={s.buttons}>
 
-                {userData.followed
-                    ? <button className={`${s.btn} ${s.btn_follow}`}
-                        onClick={() => unfollow(userData.id)}
-                    >Подписаться</button>
-                    : <button className={`${s.btn} ${s.btn_unfollow}`}
+                {!userData.followed
+                    ? <button disabled={fallowingInProgress.some(id => userData.id === id )} className={`${s.btn} ${s.btn_follow}`}
                         onClick={() => follow(userData.id)}
-
+                    >Подписаться</button>
+                    : <button disabled={fallowingInProgress.some(id => userData.id === id )} className={`${s.btn} ${s.btn_unfollow}`}
+                        onClick={() => unfollow(userData.id)}
                     >Отписаться</button>
                 }
             </div>

@@ -2,12 +2,20 @@ import { NavLink } from "react-router-dom"
 import s from "./NavItem.module.css"
 
 
-const NavItem = ({ item }) => {
+const NavItem = (props) => {
     return (
-        <li className={s.item}>
-            <NavLink to={item.path}
+        <li
+            onClick={
+                props.item.onclick
+                    ? props.item.onclick
+                    : null
+            }
+            className={s.item}>
+            <NavLink to={props.item.isPersonal
+                ? `/${props.item.path}/${props.userId}`
+                : `/${props.item.path}`}
                 className={({ isActive }) => isActive ? s.active : ""}
-            >{item.text}</NavLink>
+            >{props.item.text}</NavLink>
         </li>
     )
 }

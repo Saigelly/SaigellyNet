@@ -4,17 +4,17 @@
     text-align: center;
     margin-right: 0;
 }
-
+a.link{
+    color:#9e9faf
+}
 .link {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     text-align: center;
-
     cursor: pointer;
     width: 100%;
-    color: #9e9faf;
     font-weight: 500;
     font-size: 13px;
     padding: 15px 10px;

@@ -1,42 +1,52 @@
 import React from "react";
 import s from "./Messages.module.css"
 import Message from "./Message/Message";
+import { Field, Form } from "react-final-form";
 
 
 const Messages = (props) => {
 
-    const newMessageElement = React.createRef();
-
-    const addNewMessage = () => {
-        props.onAddMessage();
+    const initialValues = {
+        newMessageText: ""
     }
-    const onMessageChange = () => {
-        const text = newMessageElement.current.value;
-        props.onMessageChange(text);
+
+    const addNewMessage = (values) => {
+        props.onAddMessageClick(values.newMessageText);
     }
 
     return (
         <div className={s.chat}>
-            <div className={s.messages}>
-                <ul className={s.messagesList}>
-                    {props.messages.map(message =>
-                        <Message message={message} key={message.id} />)}
-                </ul>
-            </div>
-            <div className={s.newMessage}>
-                <textarea
-                    ref={newMessageElement}
-                    className={s.newPost}
-                    value={props.newMessageText}
-                    onChange={onMessageChange}
-                />
-                <button
-                    onClick={addNewMessage}
-                    className={s.button}
-                >
-                    Написать
-                </button>
-            </div>
+            <Dialogue messages={props.messages} />
+            <Form
+                initialValues={initialValues}
+                onSubmit={addNewMessage}>
+                {NewMessageForm}
+            </Form>
+        </div>
+    )
+}
+
+const NewMessageForm = (props) => {
+    return (
+        <form className={s.newMessage} onSubmit={props.handleSubmit}>
+            <Field
+                name="newMessageText"
+                component={"textarea"}
+                className={s.newPost}
+            />
+            <button className={s.button}>
+                Написать
+            </button>
+        </form>
+    )
+}
+
+const Dialogue = (props) => {
+    return (
+        <div className={s.messages}>
+            <ul className={s.messagesList}>
+                {props.messages.map(message => <Message message={message} key={message.id} />)}
+            </ul>
         </div>
     )
 }

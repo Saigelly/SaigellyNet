@@ -1,13 +1,15 @@
 import s from "./Dialogues.module.css";
-import MessagesContainer from "./Messages/MessagesContainer";
-import ChatsContainer from "./Chats/ChatsContainer";
+import Chats from "./Chats/Chats";
+import Messages from "./Messages/Messages";
 
-const Dialogues = () => {
-
+const Dialogues = (props) => {
     return (
         <section className={s.dialogues}>
-            <ChatsContainer />
-            <MessagesContainer />
+            <Chats chats={props.chats} />
+
+            <Messages
+                messages={props.messages}
+                onAddMessageClick={props.onAddMessageClick}/>
         </section>
     )
 }
