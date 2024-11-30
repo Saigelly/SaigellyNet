@@ -8,7 +8,7 @@ const LoginForm = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field name="email" component={Input} placeholder="Логин"
-                    validate={required} />
+                    validateFields={[required, maxLength10]} />
             </div>
             <div>
                 <Field name="password" component={Input} placeholder="Пароль"

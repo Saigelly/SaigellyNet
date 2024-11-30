@@ -42,13 +42,14 @@ export const putLogin = (email, password, remmemberMe) => {
         authAPI.login(email, password, remmemberMe)
             .then(data => {
                 if (data.resultCode === 0) {
-                    dispatch(getAuthUserData())
+                    dispatch(getAuthUserData());
+                }
+                else {
+                    return data.messages[0];
                 }
             })
     }
 }
-
-
 
 export const logout = () => {
     return (dispatch) => {
