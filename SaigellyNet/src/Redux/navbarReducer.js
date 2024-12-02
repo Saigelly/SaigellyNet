@@ -1,11 +1,11 @@
 const initialState = {
     navItems: [
-        { path: "profile/home", text: "Моя страница", isPersonal: false},
-        { path: "dialogues", text: "Сообщения", isPersonal: false },
-        { path: "users", text: "Пользователи", isPersonal: false },
-        { path: "news", text: "Новости",  isPersonal: false },
-        { path: "music", text: "Музыка",  isPersonal: false },
-        { path: "settings", text: "Настройки",  isPersonal: false },
+        { path: "profile/home", title: "Моя страница", iconSrc:"home", isPersonal: false},
+        { path: "dialogues", title: "Сообщения", iconSrc:"messages", isPersonal: false },
+        { path: "users", title: "Пользователи", iconSrc:"user", isPersonal: false },
+        { path: "news", title: "Новости",  iconSrc:"home", isPersonal: false },
+        { path: "music", title: "Музыка",  iconSrc:"home", isPersonal: false },
+        { path: "settings", title: "Настройки", iconSrc:"home", isPersonal: false },
     ],
 }
 

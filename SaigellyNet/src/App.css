@@ -15,5 +15,6 @@
     max-width: 1170px;
     grid-area: content;
     margin: 0 auto;
+    padding-top: 100px;
 }
 
