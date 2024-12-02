@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import Navbar from "./Navbar";
 import { setProfile } from "../../Redux/profileReducer";
+import Navbar from "./Navbar";
 
 const mapStateToProps = (state) => {
     return {
